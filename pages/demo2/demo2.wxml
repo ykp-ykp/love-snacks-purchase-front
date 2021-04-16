@@ -1,0 +1,37 @@
+
+<button bind:tap="getAccounts">通过spring获取信息</button>
+<view wx:if="{{hasAccount}}" style="color:red;margin-bottom:10rpx;">
+    <view>以下为获取到的所有用户信息</view>
+    id-------------------姓名-----------------余额
+</view>
+
+<block wx:for="{{AccountList}}" wx:for-item="account" wx:key="id">
+    <view class="AccountContainer">
+        <view class="account">{{account.id}}</view>
+        <view class="account">{{account.name}}</view>
+        <view class="account">{{account.money}}</view>
+    </view>
+</block>
+
+<view style="margin-top: 50rpx">
+    <form catchsubmit="InsertAccount" catchreset="formReset">
+        <input name="id"  placeholder="用户id" />
+        <input name="name" placeholder="用户名" />
+        <input name="money" placeholder="余额" />
+        <button style="margin: 30rpx 0" type="primary" formType="submit">提交</button>
+        <button style="margin: 30rpx 0" formType="reset">重置</button>
+    </form>
+</view>
+
+<text></text>
+
+
+
+<!-- <button open-type="contact">好按钮</button>
+<button open-type="share">好按钮</button>
+<button open-type="getPhoneNumber" bindtap="getPhoneNumber">getPhoneNumber</button>
+<button open-type="getUserInfo" bindtap="getUserInfo">getUserInfo</button>
+<button open-type="launchApp">好按钮</button>
+<button open-type="openSetting">好按钮</button>
+<button open-type="feedback">好按钮</button>
+<button open-type="contact" bindtap="contact">contact客服</button> -->

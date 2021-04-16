@@ -1,0 +1,41 @@
+<!-- index.wxml -->
+<view>
+  <!-- 引用组件:搜索 -->
+  <SearchInput></SearchInput>
+
+  <!-- 
+swiper的默认宽度100%，高度为150
+原图的默认宽度为520，高度为280 
+等比例缩放：swiper的高度/swiper的宽度 == 原图的高度/原图的宽度
+所以swiper的宽度=swiper的高度*（原图的宽度/原图的高度）
+height = 100%*520/280
+-->
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}" circular="{{true}}">
+
+      <swiper-item wx:for="{{swiperImgs}}" wx:key="goods_id" wx:for-item="swiperImg">
+        <navigator >
+          <image class="swiper-image" mode="widthFix"
+          src="{{swiperImg.fileID}}" />
+        </navigator>
+      </swiper-item>
+
+  </swiper>
+</view>
+
+<view class="cateContainer">
+  <navigator class="navigator"  wx:for="{{cateList}}" wx:for-item="item" wx:key="name">
+      <image mode="widthFix" src="{{item.image_src}}"></image>
+  </navigator>
+</view>
+
+
+
+<!-- 
+  wx:key="唯一值"
+  wx:for循环的时候如果是数组，则index指的是下标0，1,2...item指的是对象
+  <block wx:for="{{Lists}}" wx:for-item="List" wx:for-index="index"></block>
+
+  wx:for循环的如果是对象，那么index是值属性名即key，而item则是key对应的value值
+  <block wx:for="{{object}}" wx:for-item="value" wx:for-index="key"></block>
+
+ -->

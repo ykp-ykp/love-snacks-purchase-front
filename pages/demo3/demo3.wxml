@@ -1,0 +1,14 @@
+<!-- 父组件通过属性向子组件(tabs)传递数据通过标签属性。下面第一个tabs是属性名，在子组件的js文件中获取。{{tabs}}是从demo3.js中的data取出来的数据
+      子组件通过函数triggerEvent("itemChange",index)向父组件传递数据
+ -->
+
+ <!-- catch:changeItem是定义的触发事件可以自定义，但是要和子组件tabs中的触发函数triggerEvent("changeItem",index)中的事件相同，否则不会触发父组件的事件。 handleItemChange是触发事件itemChange之后执行的函数-->
+<Tabs tabs="{{tabs}}" catch:itemChange="handleItemChange">
+  <view>父组件传递过来的</view>
+</Tabs>
+
+<view class="container">
+  <view class="iconfont .icon-kefu3"></view>
+  <view>客服</view>
+  <button open-type="contact">1</button>
+</view>

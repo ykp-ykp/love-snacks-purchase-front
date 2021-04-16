@@ -1,0 +1,27 @@
+<view>
+  <SearchInput></SearchInput>
+  <Tabs tabs="{{tabs}}" catch:itemChange="handleItemChange">
+  </Tabs>
+
+  <block wx:for="{{tabs}}" wx:for-item="tab" wx:key="id">
+    <block wx:if="{{tab.isActive}}">
+      <!-- 此处和上一行是为了检验选中了哪一个tabs（综合、销量、价格）， -->
+      <block wx:for="{{goodsList}}" wx:for-item="goods" wx:key="id">
+
+        <navigator class="goods_item" url="../goods_detail/index?goods_id={{goods.goods_id}}">
+          <!-- 左侧图片商品，右侧详情 -->
+          <view class="goods_img_wrap">
+            <image mode="widthFix"
+              src="{{goods.goods_small_logo?goods.goods_small_logo:'https://s3.ax1x.com/2021/02/24/yOxJLq.png'}}" />
+          </view>
+          <view class="goods_info_wrap">
+            <view class="goods_name">{{goods.goods_name}}</view>
+            <view class="goods_price">￥{{goods.goods_price}}</view>
+          </view>
+        </navigator>
+
+      </block>
+
+    </block>
+  </block>
+</view>

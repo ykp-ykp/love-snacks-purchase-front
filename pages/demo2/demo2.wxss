@@ -1,0 +1,17 @@
+/* pages/demo2/demo2.wxss */
+
+.AccountContainer{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20rpx;
+  border-bottom: 1px solid #cccccc;
+}
+
+.account{
+  flex: 1;
+}
+
+input{
+  margin: 5rpx;
+  border: gray solid 1px;
+}

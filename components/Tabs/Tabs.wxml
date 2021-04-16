@@ -1,0 +1,18 @@
+<view class="tabs">
+  <view class="tabs_title">
+   
+    <block wx:for="{{tabs}}" wx:for-item="tab" wx:key="id">
+      <view class="title_item {{tab.isActive?'active':''}}" catch:tap="bandleItemTap"
+       data-index="{{index}}">
+        {{tab.name}}
+        <!-- 下标默认为index -->
+      </view>
+    </block>
+  </view>
+  <view class="tabs_content">
+    <!-- slot是占位符，当父组件传递过来数据的时候，就会替代它 -->
+    <!-- <block wx:for="{{tabs}}" wx:for-item="tab" wx:key="id">
+      <block wx:if="{{tab.isActive}}">{{index}}</block>
+  </block> -->
+  </view>
+</view>

@@ -1,0 +1,13 @@
+<view class="search_input">
+  <navigator url="/pages/search/index" open-type="navigate">
+    搜索
+  </navigator>
+</view>
+
+
+<!-- 组件的使用：
+  第一步：新增组件
+  第二步：在要使用组件的页面的json下配置如下 "SearchInput": "../../components/SearchInput/SearchInput"
+  第三步：在wxml页面直接使用<SearchInput></SearchInput>即可
+  -->
+  

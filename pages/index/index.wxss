@@ -1,0 +1,27 @@
+
+
+swiper{
+  height: 340rpx;
+  /* 原图的高度 */
+  width: 100%;
+}
+
+image{
+  width: 100%;
+}
+
+.cateContainer{
+  display: flex;
+  flex-direction: row;
+}
+
+.navigator{
+  /* 如果元素不是弹性盒模型对象的子元素，则 flex 属性不起作用.而image不是弹性盒子的直接子元素 */
+  flex: 1;
+  /* flex: 1.让所有弹性盒模型对象的子元素都有相同的长度 */
+  padding: 40rpx;
+
+}
+.navigator image{
+ width: 100%;
+}

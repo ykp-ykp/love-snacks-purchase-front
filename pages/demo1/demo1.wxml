@@ -1,0 +1,6 @@
+<!-- rich-text富文本标签
+1。nods实现
+-->
+<rich-text class="" nodes="{{html}}">
+    
+</rich-text>

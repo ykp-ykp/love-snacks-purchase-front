@@ -1,0 +1,62 @@
+page{
+    height: 100%;
+}
+
+.cates{
+    height: 100%;
+    .cates_container{
+        height: ~'calc(100vh - 75rpx)';
+        display: flex;
+        .left_menu{
+            flex: 2;
+            .menu_item{
+                height: 80rpx;
+                display: flex;
+                justify-content: center;
+                //justify-content属性定义flex子项在flex容器的当前行的 纵轴 方向上的对齐方式。水平居中
+                //align-items 属性定义flex子项在flex容器的当前行的 纵轴 方向上的对齐方式。垂直居中
+                align-items: center;
+                font-size: 25rpx;
+                color: gray;
+            }
+            .action{
+                color: var(--themeColor);
+                border-left: 5rpx solid currentColor;
+            }
+        }
+        .right_content{
+            flex: 5;
+           
+            .goods_group{
+                height: 100%;
+                .goods_title{
+                    height: 60rpx;
+                    text-align: center;//水平居中
+                    font-size: 30rpx;
+                    margin: 10rpx auto 10rpx auto;
+                    color: rgb(230, 181, 125);
+                }
+                .goods_list{
+                    display: flex;
+                    flex-wrap: wrap;//flex换行
+                    navigator{
+                        width: 33.33%;
+                        // 一个navigator占1/3，即一行有3个navigator
+                        padding: 5rpx;
+                        //border: 1px solid rgb(221, 140, 167);
+                        image{
+                            //宽度为100%时，是指与外层容器保持一样大
+                            width: 100%;
+                        }
+                        .goods_name{
+                            text-align: center;
+                            font-size: 23rpx;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+    
+}
