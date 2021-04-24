@@ -110,7 +110,7 @@ Page({
     goodsName:goodsInfo.name,image:goodsInfo.image,price:goodsInfo.price,weight:1}
     let res = await utils.Add(url,data);
     if(res.data == 1)
-      showToast("添加成功");
+      showToast("加入成功");
   }
 
 })

@@ -12,12 +12,14 @@
         <!-- 右側內容 -->
         <block wx:for="{{goodsList}}" wx:for-item="goods" wx:key="id">
         <!-- 下面那个navigator是跳转到商品详情，传递过去的是商品名 -->
-          <navigator class="goods_item" url="../goods_detail/index?goods_name={{goods.name}}">
+          <view class="goods_item" >
             <!-- 左侧图片商品，右侧详情 -->
-            <view class="goods_img_wrap">
+            
+            <navigator class="goods_img_wrap" url="../goods_detail/index?goods_name={{goods.name}}">
               <image mode="widthFix"
                 src="{{goods.image?goods.image:'https://s3.ax1x.com/2021/02/24/yOxJLq.png'}}" />
-            </view>
+            </navigator>
+            <!-- 下面是商品信息 -->
             <view class="goods_info_wrap">
               <view class="nameANDprice">
                 <view class="goods_name">{{goods.name}}</view>
@@ -26,9 +28,8 @@
               <view class="gouwuche">
                 <view class="iconfont icon-gouwuche" catchtap="addCart" data-goodsname="{{goods.name}}"></view>
               </view>
-              
             </view>
-          </navigator>
+          </view>
         </block>
 
     </scroll-view>
