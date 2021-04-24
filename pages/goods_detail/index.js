@@ -1,11 +1,5 @@
 // pages/goods_detail/index.js
-import {
-  getSetting,
-  chooseAddress,
-  openSetting,
-  showModal,
-  showToast
-} from "../../utils/asyncWx.js";
+import {getSetting,chooseAddress,openSetting,showModal,showToast} from "../../utils/asyncWx.js";
 var request_index = require("../../request/index");
 var utils = require("../../utils/util");
 var app = getApp();
@@ -17,8 +11,8 @@ Page({
   data: {
     goodsDetail: {},
     islogin: false,
-    showModalStatus:false,
-    num:1
+    showModalStatus: false,
+    num: 1
   },
   url: "",
   goods_name: "",
@@ -46,6 +40,7 @@ Page({
       goodsDetail: res.data
     })
   },
+
 
   handleCartAdd(e) {
     if (!this.data.islogin) {
@@ -110,23 +105,49 @@ Page({
       showToast("添加成功");
   },
 
-  Purchase() {
-    if (!this.data.islogin) {
+
+  async Purchase() {
+    if (!app.globalData.islogin) {
       showToast("请登录")
       return
     }
-    wx.showModal({
-      title: "成功",
-      icon: 'loading...', //图标，支持"success"、"loading" 
-      image: this.data.goodsDetail.image, //自定义图标的本地路径，image 的优先级高于 icon
-
-      success: function () {},
-      fail: function () {},
-      complete: function () {}
-    })
+    const res = await showModal('是否确认付款')
+    if (res.confirm) {
+      this.addOrder(this.data.goodsDetail)
+      showToast("支付成功");
+      this.setData({showModalStatus:false})
+    } else {
+      showToast("取消支付")
+    }
   },
 
+  async addOrder(goods) { //v是购物车里面选中去支付的一项商品
+    //创建订单并添加到数据库中
 
+    let orderId = new Date().getTime() + Math.random().toString(36).substring(2)
+    let openid = app.globalData.openid
+    let nickName = app.globalData.userInfo.nickName
+    let goodsName = goods.name
+    let price = goods.price
+    let weight = this.data.num
+    let totalPrice = goods.price * this.data.num
+    let state = 1 //表示已付款
+    let time = utils.gettime()
+    let url = "http://localhost:8080/OrderController/addOrder"
+    let data = {
+      orderId: orderId,
+      openid: openid,
+      nickName: nickName,
+      goodsName: goodsName,
+      price: price,
+      weight: weight,
+      totalPrice: totalPrice,
+      state: state,
+      time: time,
+    }
+    console.log("即将加入订单的商品：", data)
+    await utils.Add(url, data) //向数据库中的order表添加数据
+  },
 
 
 
@@ -137,16 +158,20 @@ Page({
     if (num > 1) {
       num--;
     }
-    this.setData({num})
+    this.setData({
+      num
+    })
   },
   /* 点击加号 */
   bindPlus: function () {
     var num = this.data.num;
     // 不作过多考虑自增1  
     num++;
-    this.setData({num})
+    this.setData({
+      num
+    })
   },
- 
+
   //显示对话框
   showModal: function () {
     // 显示遮罩层

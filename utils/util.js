@@ -142,3 +142,23 @@ export function getDataFromMysql(url,data){
       })
   })
 }
+
+
+export function gettime() {
+  var timestamp = Date.parse(new Date());
+  var date = new Date(timestamp);
+  //获取年份  
+  var Y = new Date().getFullYear();
+  //获取月份  
+  var Month = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+  //获取当日日期
+  //var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+  var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
+  //获取当日时
+  var H = new Date().getHours()
+  //获取当日分
+  var M = new Date().getMinutes()
+  //获取当日秒
+  var S = new Date().getSeconds()
+  return Y + '-' + Month + '-' + D + '-' + H + ':' + M + ':' + S
+}

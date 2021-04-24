@@ -142,7 +142,7 @@ Page({
         let weight = v.weight
         let totalPrice = v.price * v.weight
         let state = 1 //表示已付款
-        let time = this.gettime()
+        let time = utils.gettime()
         let url = "http://localhost:8080/OrderController/addOrder"
         let data = {
             orderId: orderId,
@@ -167,25 +167,5 @@ Page({
         }
         await utils.Delete(url, data); //更新数据库中cart表中该商品的数量
     },
-    //获取当天时间年月日时分秒
-    gettime() {
-        var timestamp = Date.parse(new Date());
-        var date = new Date(timestamp);
-        //获取年份  
-        var Y = new Date().getFullYear();
-        //获取月份  
-        var Month = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
-        //获取当日日期
-        //var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-        var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
-        //获取当日时
-        var H = new Date().getHours()
-        //获取当日分
-        var M = new Date().getMinutes()
-        //获取当日秒
-        var S = new Date().getSeconds()
-
-        return Y + '-' + Month + '-' + D + '-' + H + ':' + M + ':' + S
-    },
-
+    
 })

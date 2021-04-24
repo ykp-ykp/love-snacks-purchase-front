@@ -63,7 +63,6 @@
    <view class='guige'>
     <text >总价：</text>
       <view class='gg'>
-        
         <text style="color:red">Y{{num*goodsDetail.price}}</text>
       </view>
    </view>
