@@ -19,8 +19,14 @@
                 src="{{goods.image?goods.image:'https://s3.ax1x.com/2021/02/24/yOxJLq.png'}}" />
             </view>
             <view class="goods_info_wrap">
-              <view class="goods_name">{{goods.name}}</view>
-              <view class="goods_price">￥{{goods.price}}</view>
+              <view class="nameANDprice">
+                <view class="goods_name">{{goods.name}}</view>
+                <view class="goods_price">￥{{goods.price}}</view>
+              </view>
+              <view class="gouwuche">
+                <view class="iconfont icon-gouwuche" catchtap="addCart" data-goodsname="{{goods.name}}"></view>
+              </view>
+              
             </view>
           </navigator>
         </block>

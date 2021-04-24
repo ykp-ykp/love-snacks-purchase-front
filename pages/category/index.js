@@ -1,5 +1,8 @@
 // pages/category/index.js
+import { getSetting, chooseAddress, openSetting, showModal, showToast } from "../../utils/asyncWx.js";
 var request_index = require("../../request/index");
+var utils = require("../../utils/util");
+var app = getApp()
 Page({
 
   /**
@@ -94,6 +97,20 @@ Page({
       goodslist.push(element)
     });
     this.setData({goodsList:goodslist})
-}
+},
+
+  async addCart(options){
+    //console.log(options)
+    let goodsname = options.target.dataset.goodsname;
+    let goodsInfo;
+    this.data.goodsList.forEach(v=>{if(v.name==goodsname)goodsInfo = v})
+    //console.log("goodsInfo = ",goodsInfo)
+    let url = "http://localhost:8080/CartController/addCart";
+    let data = {openid:app.globalData.openid,nickName:app.globalData.userInfo.nickName,
+    goodsName:goodsInfo.name,image:goodsInfo.image,price:goodsInfo.price,weight:1}
+    let res = await utils.Add(url,data);
+    if(res.data == 1)
+      showToast("添加成功");
+  }
 
 })
