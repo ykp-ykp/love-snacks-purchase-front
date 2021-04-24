@@ -35,29 +35,6 @@ Component({
       4.对数组中的isActive进行改变 */
       
       const {index} = e.currentTarget.dataset;
-      //解构：对复杂类型进行解构的时候 复制了一份变两个引用而已
-      //let {tabs} = this.data;
-      //let tabs = this.data.tabs;  这种写法和上面是一样的
-      
-      // let {tabs} = this.data;
-      // this.data.tabs.forEach((v,i)=>i===index?v.isActive=true:v.isActive=false);
-      // this.setData({
-      //   tabs
-      // })
-      //上面的代码都挪到了父组件
-
-      //下面这种写法也可以修改tabs
-      // var tabs = this.data.tabs;
-      // for(var idx = 0;idx<=3;idx++){
-      //   if(idx == index)
-      //     tabs[idx].isActive = true;
-      //   else
-      //     tabs[idx].isActive = false;
-      // }
-      // this.setData({
-      //   tabs
-      // })
-
       this.triggerEvent("itemChange",index)//changeItem是触发事件的名称，并不是触发执行的函数
     }
   }

@@ -35,25 +35,25 @@
         <view class="user_order">
             <view class="my">我的订单</view>
             <view class="order">
-                <view class="item">
+                <view class="item" data-state="0" catchtap="getOrder" >
                     <view class="iconfont icon-dingdan"></view>
-                    <text bindtap="commonToast">全部订单</text>
+                    <text>全部订单</text>
                 </view>
-                <view class="item" bindtap="commonToast">
+                <view class="item" data-state="1" catchtap="getOrder" >
                     <view class="iconfont icon-daifukuan"></view>
-                    <text>待付款</text>
-                </view>
-                <view class="item" bindtap="commonToast">
-                    <view class="iconfont icon-daishouhuo"></view>
                     <text>待收货</text>
                 </view>
-                <view class="item" bindtap="commonToast">
+                <view class="item" data-state="2" catchtap="getOrder" >
+                    <view class="iconfont icon-daishouhuo"></view>
+                    <text>待评价</text>
+                </view>
+                <view class="item" data-state="3" catchtap="getOrder" >
                     <view class="iconfont icon-tuihuo"></view>
                     <text>退款/退货</text>
                 </view>
             </view>
         </view>
-        <view class="goods_address">收货地址管理</view>
+        <view class="goods_address" catchtap="addressUpdatee">收货地址管理</view>
         <button class="item customer" open-type="contact">
             <text>联系客服</text>
             <text>19913328359</text>

@@ -1,19 +1,14 @@
 <view class="detail_swiper">
-  <swiper autoplay  circular indicator-dots>
-    <swiper-item wx:for="{{goodsDetail.pics}}" wx:key="pics_id" bindtap="handlePrevewImage"
-    data-url="{{item.pics_mid}}" data-urls="{{goodsDetail.pics}}">
-    <image mode="widthFix" src="{{item.pics_mid}}" ></image>
-    <!-- 商品图片 -->
-    </swiper-item>
-  </swiper>
+  <image mode="widthFix" src="{{goodsDetail.image}}"></image>
 </view>
 
-<view class="goods_price">￥{{goodsDetail.goods_price}}</view>
+<view class="goods_price">￥{{goodsDetail.price}}</view>
 <!-- 商品价格 -->
 
 <view class="goods_name_row">
   <!-- 商品名字和收藏 -->
-  <view class="goods_name">{{goodsDetail.goods_name}}</view>
+  <view class="goods_name">{{goodsDetail.name}}</view>
+  <view class="goods_sales">销量：{{goodsDetail.sales}}</view>
   <view class="goods_collect" bindtap="handleCollect" >
     <view class="iconfont   {{isCollect?'icon-shoucang111':'icon-shoucang'}} "></view>
     <view class="collect_text">收藏</view>

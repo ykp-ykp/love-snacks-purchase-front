@@ -1,0 +1,63 @@
+<!--shangcheng_xk/pages/order/orderdetail/orderdetail.wxml-->
+<view class="container">
+	<view class="order-status">
+		<text>{{state[order.state-1]}}</text>
+	</view>
+	<view class="address">
+		<view class="delivery">
+			<text>配送方式</text><text>送货上门</text>
+		</view>
+		<view class="address-info">
+			<text>收货地址</text>
+			<text>{{address.all}}</text>
+		</view>
+	</view>
+	<view class="goods-list">
+	
+    <navigator class="goods-item" url="../goods_detail/index?goods_name={{goods.name}}">
+			<image src="{{goods.image}}" mode="widthFix"></image>
+			<view class="goods-info">
+				<view class="goods-title">
+					<text>{{goods.name}}</text>
+					<!-- <text>{{goods.name}}</text> -->
+				</view>
+				<view class="goods-sale">
+					<view class="goods-price">
+						<text>￥{{order.price}}</text>
+					</view>
+					<view class="goods-num">x{{order.weight}}</view>
+				</view>
+      </view>
+    </navigator>
+    
+		<view class="goods-total">
+			<view class="g-t-item">
+				<text>商品总价</text>
+				<text>￥{{order.totalPrice}}元</text>
+			</view>
+
+			<view class="g-t-item">
+				<text>实付金额</text>
+				<text class="total-price">￥{{order.totalPrice}}元</text>
+			</view>
+		</view>
+	</view>
+	<view class="goods-info">
+		<view class="goods-total">
+			<view class="g-t-item">
+				<text>订单编号</text>
+				<text>{{order.orderId}}</text>
+			</view>
+			<view class="g-t-item">
+				<text>创建时间</text>
+				<text>{{order.time}}</text>
+			</view>
+			<view class="g-t-item">
+				<text>支付方式</text>
+				<text>微信支付</text>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="operate">{{operate[[order.state-1]]}}</view>

@@ -15,16 +15,16 @@
   <view class="cart_main">
     <view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
       <!-- 图片 -->
-      <navigator class="cart_img_wrap">
-        <image src="{{item.goods_small_logo}}" mode="widthFix" />
+      <navigator class="cart_img_wrap" url="../goods_detail/index?goods_name={{item.goodsName}}">
+        <image src="{{item.image}}" mode="widthFix" />
       </navigator>
       <!-- 信息 -->
       <view class="cart_info_wrap">
-        <view class="info_name">{{item.goods_name}}</view>
+        <view class="info_name">{{item.goodsName}}</view>
         <view class="info_price_wrap">
-          <view class="price">¥{{item.goods_price}}</view>
+          <view class="price">¥{{item.price}}</view>
           <view class="num_tool">
-            <view class="num">X {{item.num}}</view>
+            <view class="num">X {{item.weight}}</view>
           </view>
         </view>
       </view>

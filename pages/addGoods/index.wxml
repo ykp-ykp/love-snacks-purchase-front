@@ -1,0 +1,19 @@
+<view style="margin-top: 50rpx">
+    <form catchsubmit="AddGoods" catchreset="formReset">
+      <input name="name"  placeholder="商品名" bindinput="getName"/>
+        <input name="price" type="digit" placeholder="单价" bindinput="getPrice"/>
+        <!-- <input name="type" placeholder="商品类型" bindinput="getType"/> -->
+        <!-- 引用options组件，实现下拉框 -->
+        <Options prop-array='{{selectArray}}' bind:myget='getDate'></Options>
+
+        <input name="surplus" type="number" placeholder="余量" bindinput="getSurplus"/>
+        <input name="discount" type="digit" placeholder="折扣价" bindinput="getDiscount"/>
+        <button bindtap="uploadimage" type="primary" style="margin-left:0rpx">选择图片</button>
+        <input name="information" placeholder="描述信息" bindinput="getInformation"/>
+      <view style="display:flex;flex-direction: cloumn;">
+        <button style="margin: 30rpx 0" type="primary" formType="submit">添加</button>
+        <button style="margin: 30rpx 0" formType="reset" bindtap="reset">重置</button>
+      </view>
+        
+    </form>
+</view>

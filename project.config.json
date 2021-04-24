@@ -41,7 +41,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.15.0",
-  "projectname": "jmyp",
+  "projectname": "jmyp-%E5%A4%84%E7%90%86%E8%AE%A2%E5%8D%95",
   "debugOptions": {
     "hidedInDevtools": []
   },
@@ -50,6 +50,7 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "appid": "wx3aa5fd77324397d1",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "plugin": {
       "list": []
@@ -96,6 +97,18 @@
           "name": "我的",
           "pathName": "pages/user/index",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "添加商品",
+          "pathName": "pages/addGoods/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "商品详情",
+          "pathName": "pages/goods_detail/index",
+          "query": "goods_name=百草味大面筋",
           "scene": null
         }
       ]

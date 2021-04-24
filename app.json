@@ -1,11 +1,10 @@
 {
   "pages": [
+    "pages/addGoods/index",
     "pages/user/index",
     "pages/index/index",
     "pages/demo2/demo2",
     "pages/demo3/demo3",
-    "pages/demo1/demo1",
-    "pages/goods_list/index",
     "pages/category/index",
     "pages/goods_detail/index",
     "pages/cart/index",
@@ -15,7 +14,8 @@
     "pages/feedback/index",
     "pages/login/index",
     "pages/auth/index",
-    "pages/pay/index"
+    "pages/pay/index",
+    "pages/orderdetail/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -55,5 +55,6 @@
       }
     ]
   },
+  "style": "v2",
   "sitemapLocation": "sitemap80.json"
 }

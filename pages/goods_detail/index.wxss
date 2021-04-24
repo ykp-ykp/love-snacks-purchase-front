@@ -2,12 +2,12 @@ page {
   padding-bottom: 90rpx;
   /* 目的是为了解决底部固定的一栏挡住商品详情 */
 }
-.detail_swiper swiper {
+.detail_swiper {
   height: 65vw;
   text-align: center;
 }
-.detail_swiper swiper image {
-  width: 60%;
+.detail_swiper image {
+ width: 65%;
 }
 .goods_price {
   padding: 15rpx;
@@ -22,7 +22,7 @@ page {
   display: flex;
 }
 .goods_name_row .goods_name {
-  flex: 5;
+  flex: 2;
   color: #000;
   font-size: 30rpx;
   padding: 0 10rpx;
@@ -31,6 +31,14 @@ page {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
+.goods_name_row .goods_sales {
+  flex: 2;
+  color: #000;
+  font-size: 30rpx;
+  padding: 0 10rpx;
+  display: -webkit-box;
+}
+
 .goods_name_row .goods_collect {
   flex: 1;
   display: flex;

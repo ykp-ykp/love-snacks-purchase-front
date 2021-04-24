@@ -1,2 +1,24 @@
-<!--pages/order/index.wxml-->
-<text>pages/order/index.wxml</text>
+<view class="tabs">
+    <Tabs tabs="{{tabs}}" bind:itemChange="handletabsitemchange"></Tabs>
+</view>
+
+    <view class="order_main">
+        <view wx:for="{{orders}}" wx:key="order_id" class="order_item" catchtap="goOrderDetail" data-orderid="{{item.orderId}}">
+            <view class="order_no_row">
+                <view class="order_no_text">订单编号</view>
+                <view class="order_no_value">{{item.orderId}}</view>
+            </view>
+            <view class="order_price_row">
+                <view class="order_price_text">订单价格</view>
+                <view class="order_price_value">￥{{item.totalPrice}}</view>
+            </view>
+            <view class="order_state_row">
+                <view class="order_time_text">订单状态</view>
+                <view class="order_state_value">{{state[item.state-1]}}</view>
+            </view>
+            <view class="order_time_row">
+                <view class="order_time_text">订单时间</view>
+                <view class="order_time_value">{{item.time}}</view>
+            </view>
+        </view>
+    </view>

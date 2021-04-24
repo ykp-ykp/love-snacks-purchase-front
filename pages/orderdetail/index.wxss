@@ -1,0 +1,117 @@
+/* shangcheng_xk/pages/order/orderdetail/orderdetail.wxss */
+.order-status{
+	display: flex;
+  align-items: center;
+  border-top: white solid 1px;
+	color: #fff;
+	font-size: 32rpx;
+	height: 150rpx;
+  background-color: var(--themeColor);
+	background-size: 100% 100%;
+}
+.order-status text{
+	margin-left: 30rpx;
+	font-weight: bold;
+}
+.address{
+	background-color: #fff;
+	margin: 15rpx 10rpx;
+	border-radius: 10rpx;
+	font-size: 28rpx;
+}
+.delivery{
+	display: flex;
+	justify-content: space-between;
+	padding: 15rpx;
+	border-bottom: 2rpx solid #f6f6f6;
+}
+.delivery text:nth-child(1){
+	color: #666;
+}
+.address-info{
+	display: flex;
+	justify-content: space-between;
+	padding: 15rpx;
+}
+.address-info text:nth-child(1){
+	color: #666;
+	width: 25%;
+}
+.address-info text:nth-child(2){
+	color: #666;
+	text-align: right;
+	text-align: justify;
+}
+.goods-list{
+	background-color: #fff;
+	margin: 15rpx 10rpx;
+	border-radius: 10rpx;
+	font-size: 28rpx;
+}
+.goods-item{
+	display: flex;
+	align-items: center;
+	padding: 30rpx 15rpx;
+	border-bottom: 2rpx solid #f6f6f6;
+}
+.goods-item image{
+	width: 120rpx;
+	margin-right: 30rpx;
+}
+.goods-info{
+	flex: 1;
+}
+.goods-title{
+	display: flex;
+	flex-direction: column;
+}
+.goods-title text:nth-child(1){
+	font-weight: bold;
+}
+.goods-title text:nth-child(2){
+	color: #999;
+	font-size: 26rpx;
+}
+.goods-sale{
+	display: flex;
+	justify-content: space-between;
+	padding: 15rpx 0;
+}
+.goods-price text:nth-child(1){
+	color: #f00;
+	font-size: 30rpx;
+	margin-right: 15rpx;
+}
+.goods-price text:nth-child(2){
+	color: #999;
+	font-size: 26rpx;
+	text-decoration: line-through;
+}
+.goods-total{
+	padding: 30rpx 15rpx;
+}
+.g-t-item{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30rpx;
+}
+.total-price{
+	color: #f00;
+	font-weight: bold;
+}
+.goods-info{
+	background-color: #fff;
+	margin: 15rpx 10rpx;
+	border-radius: 10rpx;
+	font-size: 28rpx;
+}
+
+.operate{
+	margin: 50rpx auto;
+	text-align:center;
+	border:2px solid #fa5353;
+	padding:10px 40px; 
+	color: #fa5353;
+	width:350px;
+	border-radius:25px;
+}

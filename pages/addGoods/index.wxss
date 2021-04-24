@@ -1,0 +1,8 @@
+/* pages/demo2/demo2.wxss */
+
+
+input{
+  height: 60rpx;
+  margin: 10rpx;
+  border: #53d46f solid 1px;
+}

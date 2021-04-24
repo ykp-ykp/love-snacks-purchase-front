@@ -9,22 +9,21 @@
       </block>
     </scroll-view>
     <scroll-view class="right_content" scroll-y="{{true}}" scroll-top="{{scrollTop}}">
-<!-- 右側內容 -->
-      <veiw class="goods_group">
-        <block wx:for="{{rightContent}}" wx:key="id" wx:for-item="item">
-          <view class="goods_title">/{{item.cat_name}}/</view>
-
-          <view class="goods_list">
-            <block wx:for="{{item.children}}" wx:key="cat_id" wx:for-item="itemChild">
-              <navigator url="/pages/goods_list/index?cat_id={{itemChild.cat_id}}" >
-                <image mode="widthFix" src="{{itemChild.cat_icon}}"></image>
-                <view class="goods_name">{{itemChild.cat_name}}</view>
-              </navigator>
-            </block>
-          </view>
-
+        <!-- 右側內容 -->
+        <block wx:for="{{goodsList}}" wx:for-item="goods" wx:key="id">
+        <!-- 下面那个navigator是跳转到商品详情，传递过去的是商品名 -->
+          <navigator class="goods_item" url="../goods_detail/index?goods_name={{goods.name}}">
+            <!-- 左侧图片商品，右侧详情 -->
+            <view class="goods_img_wrap">
+              <image mode="widthFix"
+                src="{{goods.image?goods.image:'https://s3.ax1x.com/2021/02/24/yOxJLq.png'}}" />
+            </view>
+            <view class="goods_info_wrap">
+              <view class="goods_name">{{goods.name}}</view>
+              <view class="goods_price">￥{{goods.price}}</view>
+            </view>
+          </navigator>
         </block>
-      </veiw>
 
     </scroll-view>
   </view>

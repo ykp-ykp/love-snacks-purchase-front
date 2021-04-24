@@ -7,12 +7,10 @@ cloud.init()
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
-  return await cloud.database().collection("goodsCategory")
-  .get()
-  .then(res=>{
-    return res
-  })
-  .catch(res=>{
-    return res
-  })
+  return {
+    event,
+    openid: wxContext.OPENID,
+    appid: wxContext.APPID,
+    unionid: wxContext.UNIONID,
+  }
 }

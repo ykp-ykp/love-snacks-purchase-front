@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "Options": "/components/options/options"
+  },
+  "navigationBarTitleText": "添加商品"
+  
+}

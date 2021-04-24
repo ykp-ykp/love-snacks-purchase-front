@@ -21,23 +21,23 @@
       <view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
         <!-- 复选框 -->
         <view class="cart_chk_wrap">
-          <checkbox-group data-id="{{item.goods_id}}" bindchange="handleItemChange">
+          <checkbox-group data-name="{{item.goodsName}}" bindchange="handleItemChange">
             <checkbox checked="{{item.checked}}" />
           </checkbox-group>
         </view>
         <!-- 图片 -->
-        <navigator class="cart_img_wrap">
-          <image src="{{item.goods_small_logo}}" mode="widthFix" />
+        <navigator class="cart_img_wrap" url="../goods_detail/index?goods_name={{item.goodsName}}">
+          <image src="{{item.image}}" mode="widthFix" />
         </navigator>
         <!-- 信息 -->
         <view class="cart_info_wrap">
-          <view class="info_name">{{item.goods_name}}</view>
+          <view class="info_name">{{item.goodsName}}</view>
           <view class="info_price_wrap">
-            <view class="price">¥{{item.goods_price}}</view>
+            <view class="price">¥{{item.price}}</view>
             <view class="num_tool">
-              <view bindtap="numChange" data-id="{{item.goods_id}}" data-opration="{{-1}}">-</view>
-              <view class="num">{{item.num}}</view>
-              <view bindtap="numChange" data-id="{{item.goods_id}}" data-opration="{{1}}">+</view>
+              <view bindtap="numChange" data-name="{{item.goodsName}}" data-opration="{{-1}}">-</view>
+              <view class="num">{{item.weight}}</view>
+              <view bindtap="numChange" data-name="{{item.goodsName}}" data-opration="{{1}}">+</view>
             </view>
           </view>
         </view>
