@@ -26,7 +26,7 @@
                 <view class="goods_price">￥{{goods.price}}</view>
               </view>
               <view class="gouwuche">
-                <view class="iconfont icon-gouwuche" catchtap="addCart" data-goodsname="{{goods.name}}"></view>
+                <view class="iconfont icon-gouwuche" catchtap="handleCartAdd" data-goodsname="{{goods.name}}"></view>
               </view>
             </view>
           </view>

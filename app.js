@@ -1,5 +1,6 @@
 //app.js
 var request_index = require("request/index");
+var utils = require("utils/util");
 App({
   //onLaunch,onShow: options(path,query,scene,shareTicket,referrerInfo(appId,extraData))
   onLaunch: function(options){
@@ -12,6 +13,15 @@ App({
   async getAllGoods() {
     var res = await request_index.request("http://localhost:8080/GoodsController/getAllGoods");
     this.globalData.AllGoods = res.data
+  },
+
+  async getCartFromMysql() {
+    let url = "http://localhost:8080/CartController/getPersonalCart";
+        let data = {
+            openid:this.globalData.openid
+        }
+        var res = await utils.getDataFromMysql(url,data)
+        wx.setStorageSync('cart', res.data)
   },
 
   onShow: function(options){

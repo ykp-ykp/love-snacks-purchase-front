@@ -1,3 +1,5 @@
+var app = getApp()
+
 export function getToken(){
   return new Promise((resolve, reject) => {
     wx.request({

@@ -1,3 +1,6 @@
+<!--屏幕背景变暗的背景  -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+
 <view class="detail_swiper">
   <image mode="widthFix" src="{{goodsDetail.image}}"></image>
 </view>
@@ -9,7 +12,7 @@
   <!-- 商品名字和收藏 -->
   <view class="goods_name">{{goodsDetail.name}}</view>
   <view class="goods_sales">销量：{{goodsDetail.sales}}</view>
-  <view class="goods_collect" bindtap="handleCollect" >
+  <view class="goods_collect" bindtap="handleCollect">
     <view class="iconfont   {{isCollect?'icon-shoucang111':'icon-shoucang'}} "></view>
     <view class="collect_text">收藏</view>
   </view>
@@ -41,9 +44,45 @@
     <view>购物车</view>
   </navigator>
   <view class="tool_item btn_cart " bindtap="handleCartAdd">
-  加入购物车
+    加入购物车
   </view>
-  <view class="tool_item btn_buy">
+  <view class="tool_item btn_buy" bindtap="showModal">
     立即购买
   </view>
+</view>
+
+
+ <!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+   <view class='commImg'><image src='{{goodsDetail.image}}' mode="aspectFit"></image></view>
+   <view class='column'>
+      <text class="sku-title">单价</text>
+      <text class="sku-price">￥{{goodsDetail.price}}</text>
+   </view>
+   <text class="line"></text>
+   <view class='guige'>
+    <text >总价：</text>
+      <view class='gg'>
+        
+        <text style="color:red">Y{{num*goodsDetail.price}}</text>
+      </view>
+   </view>
+   <text class="line"></text>
+   <view class="row">
+        <text >数量</text>
+        <view class="quantity-position">
+           <view class="stepper">
+            <!-- 减号 -->  
+            <text class="jian" bindtap="bindMinus">-</text>
+            <!-- 数值 -->  
+            <text class="num">{{num}}</text>
+            <!-- 加号 -->  
+            <text class="jia" bindtap="bindPlus">+</text>
+            </view>
+        </view>
+   </view>
+   <text class="line"></text>
+   <view class='btn'>
+    <button class="button-buy" catchtap="Purchase">立即购买</button>
+   </view>
 </view>

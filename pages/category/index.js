@@ -99,18 +99,74 @@ Page({
     this.setData({goodsList:goodslist})
 },
 
-  async addCart(options){
-    //console.log(options)
+
+//下面三个函数是点击购物车图片时使用的
+  handleCartAdd(options) {
+    if (!app.globalData.islogin) {
+      showToast("请登录")
+      return
+    }
     let goodsname = options.target.dataset.goodsname;
     let goodsInfo;
     this.data.goodsList.forEach(v=>{if(v.name==goodsname)goodsInfo = v})
-    //console.log("goodsInfo = ",goodsInfo)
+    
+    var cart = wx.getStorageSync("cart") || []
+    
+    console.log("goodsInfo = ", goodsInfo)
+    var index = cart.findIndex(v => v.goodsName == goodsInfo.name)
+    //判断购物车缓存中是否存在当前商品，如果有就返回该商品在缓存中的下标。如果不存在返回-1
+    console.log("cart = ", cart, "--goodsInfo = ", goodsInfo)
+    console.log(index)
+    if (index == -1) {
+      //如果缓存中不存在
+      goodsInfo.weight = 1 //再多给他一个属性weight，记录当前商品在购物车中的数量
+      //下面将这个商品添加到数据库中的cart表中
+      this.addCart(goodsInfo);
+    } else {
+      cart[index].weight++
+      wx.setStorageSync('cart', cart)
+      this.updateCart(cart[index]);
+    }
+    //更新缓存中的cart表
+    //app.getCartFromMysql()
+  },
+
+  async addCart(goodsInfo) {
+    //新商品加入购物车
+
     let url = "http://localhost:8080/CartController/addCart";
-    let data = {openid:app.globalData.openid,nickName:app.globalData.userInfo.nickName,
-    goodsName:goodsInfo.name,image:goodsInfo.image,price:goodsInfo.price,weight:1}
-    let res = await utils.Add(url,data);
-    if(res.data == 1)
-      showToast("加入成功");
-  }
+    let data = {
+      openid: app.globalData.openid,
+      nickName: app.globalData.userInfo.nickName,
+      goodsName: goodsInfo.name,
+      image: goodsInfo.image,
+      price: goodsInfo.price,
+      weight: goodsInfo.weight
+    }
+    //更新缓存中的cart列表
+    var cart = wx.getStorageSync('cart')
+    cart.push(data)
+    wx.setStorageSync('cart', cart)
+    //更新缓存中的cart列表------
+    
+    let res = await utils.Add(url, data);
+    if (res.data == 1)
+      showToast("添加成功");
+  },
+
+  async updateCart(goodsInfo) {
+    //购物车中已有商品，增加数量
+    //这里面的goodsInfo是从cart里面提出来的。和addCart里面的goodsInfo不同。所以下面传递商品名的写法不同
+    let url = "http://localhost:8080/CartController/updateItem";
+    let data = {
+      openid: app.globalData.openid,
+      goodsName: goodsInfo.goodsName,
+      weight: goodsInfo.weight
+    }
+    let res = await utils.Add(url, data); //更新数据库中cart表中该商品的数量
+    if (res.data == 1)
+      showToast("添加成功");
+  },
+
 
 })
