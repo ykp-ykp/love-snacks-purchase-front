@@ -59,5 +59,10 @@
 		</view>
 	</view>
 </view>
-
-<view class="operate">{{operate[[order.state-1]]}}</view>
+<!-- 如果是已经评价过的订单就不显示操作按钮 -->
+<block wx:if="{{order.state != 4}}">
+	<view class="operate" data-state="{{order.state}}" catchtap="Operate">{{operate[[order.state-1]]}}</view>
+</block>
+<view wx:else>
+评价内容：
+</view>

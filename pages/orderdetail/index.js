@@ -1,4 +1,5 @@
 // pages/orderdetail/index.js
+import { getSetting, chooseAddress, openSetting, showModal, showToast } from "../../utils/asyncWx.js";
 var utils = require("../../utils/util")
 Page({
 
@@ -10,7 +11,7 @@ Page({
     goods:{},
     order:{},
     address:{},
-    state : ["已付款-等待收货...","已收货-待评价...","正在退货-处理中..."],
+    state : ["已付款-等待收货...","已收货-待评价...","正在退货-处理中...","订单已评价..."],
     operate: ["确认收货","去评价","取消退货"]
   },
 
@@ -46,6 +47,34 @@ Page({
     utils.getDataFromMysql(url,data)
     .then(res=>{this.setData({goods:res.data})})
   },
+
+  async Operate(options){
+    var url = ""
+    var data = {}
+    let operateType = options.target.dataset.state
+    if(operateType == 1){
+      console.log("确认收货")
+      let res =await showModal("是否确认收货")
+      if(res.confirm){
+        url = "http://localhost:8080/OrderController/updateState"
+        data = {
+          state: 2,orderId:this.data.orderId
+        }
+        utils.Add(url,data)
+        .then(
+          wx.navigateBack({
+            delta: 1,
+          })
+        )
+      }
+    }else if(operateType == 2){
+      console.log("去评价")
+    }else if(operateType == 3){
+      console.log("取消退款")
+    }
+    
+  },
+
 
   /**
    * 生命周期函数--监听页面隐藏

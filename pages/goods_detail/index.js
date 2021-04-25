@@ -30,7 +30,7 @@ Page({
       islogin: app.globalData.islogin
     })
     
-    let collections = wx.getStorageSync('collections')
+    let collections = wx.getStorageSync('collections')||[]
     collections.forEach(v=>{
       console.log("v.goodsName=",v.goodsName,"----goodsDetail.name = ",this.goods_name)
       if(v.goodsName==this.goods_name&&app.globalData.islogin == true){
