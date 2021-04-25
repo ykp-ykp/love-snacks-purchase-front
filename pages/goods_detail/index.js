@@ -53,6 +53,10 @@ Page({
   },
 
   async handleCollect(){
+    if(!app.globalData.islogin){
+      showToast("请登录")
+      return
+    }
     let goodsDetail = this.data.goodsDetail
     if(!this.data.isCollect){
       let url = "http://localhost:8080/CollectionController/addCollection"

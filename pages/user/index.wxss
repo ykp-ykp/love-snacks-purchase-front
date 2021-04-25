@@ -46,8 +46,8 @@
   border-radius: 10rpx;
 }
 .user_info_wrap .user_conente .collection .item {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   align-items: center;
 }
 .user_info_wrap .user_conente .collection .item .num {

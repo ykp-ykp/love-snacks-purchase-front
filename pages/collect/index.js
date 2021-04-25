@@ -1,4 +1,5 @@
 // pages/collect/collect.js
+var app = getApp()
 Page({
 
     /**
@@ -6,15 +7,19 @@ Page({
      */
     data: {
         //收藏数据
-        collect: []
+        collections: [],
+        islogin:false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onShow: function(options) {
-        const collect = wx.getStorageSync('collect');
-        this.setData({ collect })
+    async onShow(options) {
+        await app.getCollectionByOpenid()
+        const collections = wx.getStorageSync('collections');
+        this.setData({ collections })
+        if(app.globalData.islogin)
+            this.setData({islogin:true})
     },
     
 })

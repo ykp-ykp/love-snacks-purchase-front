@@ -42,6 +42,12 @@ Page({
         });
     },
 
+    onHide(){
+        if(app.globalData.islogin){
+            app.getCartFromMysql()
+        }
+    },
+
     //用户主动登录
     async handleLogin() {//该函数执行在onshow之前
         
@@ -56,18 +62,6 @@ Page({
                 })
         }
 
-        /*下面这种写法不行，因为 wx.getUserProfile（）是异步函数，success还没执行可能onshow已经执行，会导致userInfo数据没有成功读取*/
-        // wx.getUserProfile({
-        //     desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-        //     success: (res) => {
-        //         console.log("登录时获取信息成功")
-        //         wx.setStorageSync('userInfo', res.userInfo);
-        //         app.globalData.islogin = true
-        //         this.setData({
-        //             userInfo: res.userInfo,
-        //         })
-        //     }
-        // })
         this.addUser()
         this.onShow()      
     },
@@ -87,34 +81,6 @@ Page({
             },
             fail: console.error
           })
-
-        console.log("-*------------------------")
-
-        // var code = (await wx.login()).code
-        // console.log("code",code)
-        // var openid = await utils.getOpenid(code)  //获取openid只需要传递code参数即可
-        // console.log("通过code获取openid成功",openid)
-        // this.setData({openid:openid})
-
-          //上下方法二选一（推荐上，都是通过服务器获取openid）
-
-        //var that = this
-        // wx.login({
-        //     success (res) {
-        //     //调用 wx.login() 获取 临时登录凭证code 
-        //     if (res.code) {
-        //         console.log("res.code = ",res.code)
-        //         utils.getOpenid(res.code)
-        //         .then(res=>{
-        //             console.log("通过code获取openid成功",res)
-        //             that.setData({openid:res})
-        //         })
-                
-        //     } else {
-        //         console.log('登录失败！' + res.errMsg)
-        //     }
-        //     }
-        // })
 
     },
     // 提示用户 功能还没有实现

@@ -9,7 +9,7 @@ App({
     })
     this.getAllGoods();
     //首先加载收藏夹
-    this.getCollectionByOpenid()
+    //this.getCollectionByOpenid()
   },
 
   async getAllGoods() {
