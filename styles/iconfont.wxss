@@ -42,6 +42,7 @@
 
 .icon-shoucang111:before {
   content: "\e601";
+  color: var(--themeColor);
 }
 
 .icon-shoucang1:before {

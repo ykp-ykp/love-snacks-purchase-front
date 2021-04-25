@@ -12,7 +12,8 @@ Page({
     goodsDetail: {},
     islogin: false,
     showModalStatus: false,
-    num: 1
+    num: 1,
+    isCollect:false
   },
   url: "",
   goods_name: "",
@@ -28,6 +29,16 @@ Page({
     this.setData({
       islogin: app.globalData.islogin
     })
+    
+    let collections = wx.getStorageSync('collections')
+    collections.forEach(v=>{
+      console.log("v.goodsName=",v.goodsName,"----goodsDetail.name = ",this.goods_name)
+      if(v.goodsName==this.goods_name){
+        
+        this.setData({isCollect:true})
+      }
+      
+    })
   },
 
   async getGoodsDetail(goods_name) {
@@ -41,6 +52,25 @@ Page({
     })
   },
 
+  async handleCollect(){
+    let goodsDetail = this.data.goodsDetail
+    if(!this.data.isCollect){
+      let url = "http://localhost:8080/CollectionController/addCollection"
+      let data = {
+        openid:app.globalData.openid,goodsName:goodsDetail.name,price:goodsDetail.price,
+        type:goodsDetail.type,image:goodsDetail.image,information:goodsDetail.information,discount:goodsDetail.discount
+      }
+      await utils.Add(url,data)
+      this.setData({isCollect:true})
+    }else{  //从收藏单中删除
+      let url = "http://localhost:8080/CollectionController/deleteOneCollection"
+      let data = {openid:app.globalData.openid,goodsName:goodsDetail.name}
+      await utils.Delete(url,data)
+      this.setData({isCollect:false})
+    }
+    //更新缓存中的数据
+    app.getCollectionByOpenid();
+  },
 
   handleCartAdd(e) {
     if (!this.data.islogin) {

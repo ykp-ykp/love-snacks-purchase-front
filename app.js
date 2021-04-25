@@ -8,6 +8,8 @@ App({
       env: "ykp01-5giep5nk41b0c14e"
     })
     this.getAllGoods();
+    //首先加载收藏夹
+    this.getCollectionByOpenid()
   },
 
   async getAllGoods() {
@@ -22,6 +24,14 @@ App({
         }
         var res = await utils.getDataFromMysql(url,data)
         wx.setStorageSync('cart', res.data)
+  },
+
+  async getCollectionByOpenid(){
+    //更新缓存中的收藏表数据
+    let url = "http://localhost:8080/CollectionController/getByOpenid"
+    let data = {openid:this.globalData.openid}
+    let res =await utils.getDataFromMysql(url,data);
+    wx.setStorageSync('collections', res.data)
   },
 
   onShow: function(options){
