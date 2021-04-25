@@ -29,13 +29,6 @@ Page({
         
         app.globalData.userInfo = this.data.userInfo;
         console.log("是否登陆: ",app.globalData.islogin)
-
-        //获取 缓存中的 收藏商品数组
-        let collect = wx.getStorageSync("collect");
-        // 将缓存中的商品数量设置到 data中
-        this.setData({
-            collectNum: collect.length
-        });
     },
 
     onHide(){

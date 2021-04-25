@@ -26,7 +26,12 @@ Page({
       },
       {
         id:3,
-        name:"退款/退货",
+        name:"退货中",
+        isActive:false
+      },
+      {
+        id:4,
+        name:"已评价",
         isActive:false
       }
     ],
@@ -34,7 +39,7 @@ Page({
   },
 
   onLoad(options){
-    //首先获从“我的”页面点击的是什么类型的订单
+    //首先获从“我的”页面点击的是什么类型的订单（范围是0-4）
     let state = options.state
 
     //根据点击的订单类型，更新顶部tabs选中状态
@@ -69,7 +74,7 @@ Page({
   async getOrders(state){
     
     console.log("state = ",state)
-    //0：全部，1：待收货，2：待评价，3：退货（把数据库中也设计成这样对应的关系）
+    //0：全部，1：待收货，2：待评价，3：退货，4：已评价（把数据库中也设计成这样对应的关系）
     var url = ""
     var data = {};
     if(state == 0){

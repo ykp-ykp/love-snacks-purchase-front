@@ -35,10 +35,10 @@
         <view class="user_order">
             <view class="my">我的订单</view>
             <view class="order">
-                <view class="item" data-state="0" catchtap="getOrder" >
+                <!-- <view class="item" data-state="0" catchtap="getOrder" >
                     <view class="iconfont icon-dingdan"></view>
                     <text>全部订单</text>
-                </view>
+                </view> -->
                 <view class="item" data-state="1" catchtap="getOrder" >
                     <view class="iconfont icon-daifukuan"></view>
                     <text>待收货</text>
@@ -49,7 +49,11 @@
                 </view>
                 <view class="item" data-state="3" catchtap="getOrder" >
                     <view class="iconfont icon-tuihuo"></view>
-                    <text>退款/退货</text>
+                    <text>退货</text>
+                </view>
+                <view class="item" data-state="4" catchtap="getOrder" >
+                    <view class="iconfont icon-pingjia"></view>
+                    <text>已评价</text>
                 </view>
             </view>
         </view>
