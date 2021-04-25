@@ -20,17 +20,13 @@ Page({
     },
 
     onShow() {
-        console.log("onShow")
         //获取缓存中的 用户信息
         let userInfo = wx.getStorageSync('userInfo');
         this.setData({
             userInfo
         });
-        console.log("用户信息：",this.data.userInfo)
-        if(this.data.userInfo)
-            app.globalData.islogin = true
-        else
-            app.globalData.islogin = false
+        app.globalData.islogin = this.data.userInfo?true:false
+        
         app.globalData.userInfo = this.data.userInfo;
         console.log("是否登陆: ",app.globalData.islogin)
 
@@ -150,6 +146,15 @@ Page({
         } catch (err) {
             console.log(err);
         }
-    }
+    },
 
+    toCollection(){
+        if(!app.globalData.islogin){
+            showToast("请登录")
+            return
+        }
+        wx.navigateTo({
+          url: '../../pages/collect/index',
+        })
+    }
 })
