@@ -35,7 +35,7 @@ Page({
         isActive:false
       }
     ],
-    state : ["等待收货","待评价","退货中"]
+    state : ["等待收货","待评价","退货中","已评价"]
   },
 
   onLoad(options){
