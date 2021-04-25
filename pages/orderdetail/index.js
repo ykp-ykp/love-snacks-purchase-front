@@ -1,6 +1,7 @@
 // pages/orderdetail/index.js
 import { getSetting, chooseAddress, openSetting, showModal, showToast } from "../../utils/asyncWx.js";
 var utils = require("../../utils/util")
+var app = getApp()
 Page({
 
   /**
@@ -12,7 +13,8 @@ Page({
     order:{},
     address:{},
     state : ["已付款-等待收货...","已收货-待评价...","正在退货-处理中...","订单已评价..."],
-    operate: ["确认收货","去评价","取消退货"]
+    operate: ["确认收货","去评价","取消退货"],
+    evaluation:{}
   },
 
   /**
@@ -24,6 +26,8 @@ Page({
     this.setData({address})
     //获取订单编号
     this.setData({orderId:options.orderId})
+    //获取订单的评论信息
+    this.getEvaluation()
   },
   onShow(){
     console.log("orderId = ",this.data.orderId)
@@ -37,6 +41,7 @@ Page({
     utils.getDataFromMysql(url,data)
     .then(res=>{
       this.setData({order:res.data})
+      wx.setStorageSync('orderDetail', res.data)
       this.getTheGoods();
     })
   },
@@ -45,18 +50,22 @@ Page({
     let url = "http://localhost:8080/GoodsController/getGoodsByname"
     let data = {name:this.data.order.goodsName}
     utils.getDataFromMysql(url,data)
-    .then(res=>{this.setData({goods:res.data})})
+    .then(res=>{
+      this.setData({goods:res.data})
+      wx.setStorageSync('goodsDetail', res.data)
+    })
   },
 
   async Operate(options){
-<<<<<<< HEAD
-    
+
     let operateType = options.target.dataset.state
     if(operateType == 1){
       console.log("确认收货")
       await this.becomeWaitEvaluated();
     }else if(operateType == 2){
-      console.log("去评价")
+      wx.navigateTo({
+        url: '../../pages/evaluate/index'
+      })
     }else if(operateType == 3){
       console.log("取消退货")
       await this.becomeWaitEvaluated();
@@ -69,14 +78,6 @@ Page({
       var url = ""
       var data = {}
       let res =await showModal("是取消退货")
-=======
-    var url = ""
-    var data = {}
-    let operateType = options.target.dataset.state
-    if(operateType == 1){
-      console.log("确认收货")
-      let res =await showModal("是否确认收货")
->>>>>>> 7962b570d6bae73a147e590f3a41bd96a3feccb2
       if(res.confirm){
         url = "http://localhost:8080/OrderController/updateState"
         data = {
@@ -89,18 +90,16 @@ Page({
           })
         )
       }
-<<<<<<< HEAD
-=======
-    }else if(operateType == 2){
-      console.log("去评价")
-    }else if(operateType == 3){
-      console.log("取消退款")
-    }
-    
->>>>>>> 7962b570d6bae73a147e590f3a41bd96a3feccb2
   },
 
-
+  async getEvaluation(){
+    let url = "http://localhost:8080/EvaluationController/getOneEvaluation"
+    let data = {orderId:this.data.orderId,openid:app.globalData.openid}
+    utils.getDataFromMysql(url,data)
+    .then(res=>{
+      this.setData({evaluation:res.data})
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

@@ -1,0 +1,38 @@
+<view class="Container">
+<view class="goods-info">
+      <view class="goodsimage">
+        <image src="{{goodsDetail.image}}" mode="widthFix"></image>
+      </view>
+      
+      <view class="goods-title">
+        <view class="goods-name">
+          <text>{{goodsDetail.name}}</text>
+        </view>
+        <view class="goods-price">
+          <text>￥{{goodsDetail.price}}</text>
+        </view>
+      </view>
+      <view class="goods-sale">
+        <view class="goods-num">x{{orderDetail.weight}}</view>
+      </view>
+</view>
+  
+
+  <view class="goods-total">
+    <view class="g-t-item">
+      <text>商品总价</text>
+      <text>￥{{orderDetail.totalPrice}}元</text>
+    </view>
+
+    <view class="g-t-item">
+      <text>实付金额</text>
+      <text class="total-price">￥{{orderDetail.totalPrice}}元</text>
+    </view>
+  </view>
+
+</view>
+
+<view class='textarea'>
+    <textarea placeholder-class='textarea-text' bindinput="getContent" placeholder='期待您的评论' name="text"></textarea>
+</view>
+<button type="primary" style="width:180rpx" catchtap="submitEvaluation">发布</button>

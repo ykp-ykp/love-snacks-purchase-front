@@ -49,7 +49,8 @@
 				<text>{{order.orderId}}</text>
 			</view>
 			<view class="g-t-item">
-				<text>创建时间</text>
+				<text wx:if="{{order.state != 4}}">创建时间</text>
+				<text wx:else>评论时间</text>
 				<text>{{order.time}}</text>
 			</view>
 			<view class="g-t-item">
@@ -63,6 +64,6 @@
 <block wx:if="{{order.state != 4}}">
 	<view class="operate" data-state="{{order.state}}" catchtap="Operate">{{operate[[order.state-1]]}}</view>
 </block>
-<view wx:else>
-评价内容：
+<view wx:else class="CommentContainer">
+	评价内容：{{evaluation.content}}
 </view>

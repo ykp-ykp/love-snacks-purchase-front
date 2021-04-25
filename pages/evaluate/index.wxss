@@ -1,0 +1,82 @@
+.Container{
+  background-color: rgb(236, 230, 230);
+  margin: 20rpx 10rpx;
+  border: solid 1px gray;
+  border-radius: 12rpx;
+  padding: 20rpx 10rpx;
+}
+
+.goods-info{
+  flex-direction: row;
+  display: flex;
+  margin: 15rpx 10rpx;
+	border-radius: 10rpx;
+	font-size: 28rpx;
+}
+.goods-info .goodsimage{
+  flex: 1;
+  text-align: center;
+}
+
+.goods-info .goodsimage image{
+  width: 120rpx;
+	margin-right: 30rpx;
+}
+
+
+
+.goods-info .goods-title{
+  flex: 1;
+	display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.goods-info .goods-title .goods-name{
+  font-weight: bold;
+}
+.goods-info .goods-title .goods-price{
+  color: var(--themeColor);
+}
+
+
+.goods-info .goods-sale{
+  flex: 2;
+}
+
+.goods-info .goods-sale .goods-num{
+  font-size: 30rpx;
+  float: right;
+  margin-top: 89rpx;
+}
+.goods-total{
+	padding: 30rpx 15rpx;
+}
+.g-t-item{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30rpx;
+}
+.total-price{
+	color: #f00;
+	font-weight: bold;
+}
+
+
+/* 评论框 */
+.textarea{
+
+  margin: 20rpx 10rpx;
+  padding: 10rpx 5rpx;
+  height: 300rpx;
+  border-radius: 15rpx;
+  border: 1rpx gray solid;
+}
+
+.textarea textarea{
+  color: black;
+  width: 100%;
+}
+.textarea .commit{
+  float: right;
+}
