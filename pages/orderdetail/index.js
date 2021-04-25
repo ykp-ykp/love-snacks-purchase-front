@@ -49,6 +49,7 @@ Page({
   },
 
   async Operate(options){
+<<<<<<< HEAD
     
     let operateType = options.target.dataset.state
     if(operateType == 1){
@@ -68,6 +69,14 @@ Page({
       var url = ""
       var data = {}
       let res =await showModal("是取消退货")
+=======
+    var url = ""
+    var data = {}
+    let operateType = options.target.dataset.state
+    if(operateType == 1){
+      console.log("确认收货")
+      let res =await showModal("是否确认收货")
+>>>>>>> 7962b570d6bae73a147e590f3a41bd96a3feccb2
       if(res.confirm){
         url = "http://localhost:8080/OrderController/updateState"
         data = {
@@ -80,6 +89,15 @@ Page({
           })
         )
       }
+<<<<<<< HEAD
+=======
+    }else if(operateType == 2){
+      console.log("去评价")
+    }else if(operateType == 3){
+      console.log("取消退款")
+    }
+    
+>>>>>>> 7962b570d6bae73a147e590f3a41bd96a3feccb2
   },
 
 
