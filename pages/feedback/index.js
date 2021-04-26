@@ -17,7 +17,7 @@ Page({
       })
   },
   //提交表单
-  handleFormSubmit() {
+  async handleFormSubmit() {
       const { inputText } = this.data;
       if (!inputText.trim()) {
           wx.showToast({
@@ -27,10 +27,20 @@ Page({
           })
       }else{
         //把反馈信息上传到数据库中
-        let url = ""
-        let data = {}
+        let time = utils.gettime()
+        let url = "http://localhost:8080/FeedbackController/addFeedback"
+        let data = {openid:app.globalData.openid,nickName:app.globalData.userInfo.nickName,
+        type:this.data.radioItem,content:this.data.inputText,time:time}
+        await utils.Add(url,data)
+        showToast("反馈成功")
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1,
+          })
+        }, 1000);
       }
   },
+  
   radioChange(e){
     this.setData({radioItem:e.detail.value})
   }

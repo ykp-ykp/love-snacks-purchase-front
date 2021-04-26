@@ -17,6 +17,10 @@ Page({
     onLoad(){
         //this.test()  //测试token
         this.getOpenid()
+        utils.getToken()
+        .then(res=>{
+            console.log(res)
+        })
     },
 
     onShow() {
