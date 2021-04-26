@@ -92,24 +92,6 @@ Page({
           })
         )
       }
-<<<<<<< HEAD
-=======
-  },
-
-  async getEvaluation(){
-    let url = "http://localhost:8080/EvaluationController/getOneEvaluation"
-    let data = {orderId:this.data.orderId,openid:app.globalData.openid}
-    utils.getDataFromMysql(url,data)
-    .then(res=>{
-      this.setData({evaluation:res.data})
-    })
-  },
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
->>>>>>> ae235de576df623a674cc90327334bfaa27f6f4c
   },
 
   async getEvaluation(){

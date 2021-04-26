@@ -51,15 +51,9 @@ Page({
     await utils.Add(url, data)
 
     showToast("发表成功")
-<<<<<<< HEAD
     //评价之后更改订单状态为4（已评价）
     await this.becomehaveEvaluated();
     //返回到订单界面
-=======
-    //评价之后更改订单状态
-    await this.becomehaveEvaluated();
-
->>>>>>> ae235de576df623a674cc90327334bfaa27f6f4c
     setTimeout(function () {
       wx.navigateBack({
         delta: 2,
@@ -75,55 +69,4 @@ Page({
     }
     await utils.Add(url, data)
   },
-<<<<<<< HEAD
-=======
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
->>>>>>> ae235de576df623a674cc90327334bfaa27f6f4c
 })
