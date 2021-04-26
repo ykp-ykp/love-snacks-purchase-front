@@ -1,2 +1,20 @@
-<!--pages/feedback/index.wxml-->
-<text>pages/feedback/index.wxml</text>
+
+<view class="feedback">
+  <view class="feedback_title">问题种类</view>
+  <radio-group class="feedback_tip" bindchange="radioChange">
+    <radio value="功能意见">功能意见</radio>
+    <radio value="购买遇见问题">购买遇见问题</radio>
+    <radio value="性能问题">性能问题</radio>
+    <radio value="页面显示问题">页面显示问题</radio>
+    <radio value="其他">其他</radio>
+  </radio-group>
+  <view class="feedback_content">
+    <textarea value="{{inputText}}" bindinput="handleInputText" placeholder="请描述您的问题"></textarea>
+  </view>
+  <view class="feedback_submit">
+    <button bindtap="handleFormSubmit" size="mini">
+      <icon type="success_no_circle" size="23" color="white"></icon>
+      提交
+    </button>
+  </view>
+</view>
