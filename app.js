@@ -2,6 +2,8 @@
 var request_index = require("request/index");
 var utils = require("utils/util");
 App({
+
+
   //onLaunch,onShow: options(path,query,scene,shareTicket,referrerInfo(appId,extraData))
   onLaunch: function(options){
     wx.cloud.init({
@@ -47,11 +49,13 @@ App({
   onPageNotFound: function(options){
 
   },
+  
   globalData: {
     userInfo: "",
     isLogin:false,
     openid:"",
     AllGoods:[],
-    secret:"secret:'8da3f2130f904f306d8409720e643ae0"
+    secret:"secret:'8da3f2130f904f306d8409720e643ae0",
+    weserv:"https://images.weserv.nl/?url="
   }
 });

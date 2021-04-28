@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    weserv:app.globalData.weserv,
     //左侧菜单的数据
     leftMenuList: [],
     //被点击的左侧菜单

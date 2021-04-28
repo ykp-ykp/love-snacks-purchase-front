@@ -3,7 +3,7 @@
     <view class="collect_main">
       <navigator wx:for="{{collections}}" wx:key="goodsName" url="/pages/goods_detail/index?goods_name={{item.goodsName}}">
         <view class="goods_image">
-          <image mode="widthFix" src="{{item.image?item.image:'https://ww1.sinaimg.cn/large/007rAy9hgy1g24by9t530j30i20i2glm.jpg'}}" />
+          <image mode="widthFix" src="{{weserv+item.image}}" />
         </view>
         <view class="goods_info">
           <view class="info_name">{{item.goodsName}}</view>

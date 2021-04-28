@@ -19,7 +19,7 @@
             <navigator class="goods_img_wrap" url="../goods_detail/index?goods_name={{goods.name}}">
               <!-- <image mode="widthFix"
                 src="https://images.weserv.nl/?url={{goods.image}}" /> -->
-                <image mode="widthFix" src="{{goods.image}}" />
+                <image mode="widthFix" src="{{weserv + goods.image}}" />
             </navigator>
             <!-- 下面是商品信息 -->
             <view class="goods_info_wrap">

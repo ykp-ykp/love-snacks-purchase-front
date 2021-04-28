@@ -6,6 +6,7 @@ var app = getApp()
 Page({
 
     data: {
+        weserv:app.globalData.weserv,
         //收货地址
         address: {},
         //购物车,需要显示出来的

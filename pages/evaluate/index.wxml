@@ -1,7 +1,7 @@
 <view class="Container">
 <view class="goods-info">
       <view class="goodsimage">
-        <image src="{{goodsDetail.image}}" mode="widthFix"></image>
+        <image src="{{weserv+goodsDetail.image}}" mode="widthFix"></image>
       </view>
       
       <view class="goods-title">

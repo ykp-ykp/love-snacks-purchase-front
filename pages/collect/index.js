@@ -6,6 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        weserv:app.globalData.weserv,
         //收藏数据
         collections: [],
         islogin:false

@@ -7,12 +7,14 @@ import {
   showToast
 } from "../../utils/asyncWx.js";
 var utils = require("../../utils/util")
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    weserv:app.globalData.weserv,
     orderDetail: {},
     goodsDetail: {},
     content: ""

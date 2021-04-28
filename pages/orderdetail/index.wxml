@@ -15,7 +15,7 @@
 	<view class="goods-list">
 	
     <navigator class="goods-item" url="../goods_detail/index?goods_name={{goods.name}}">
-			<image src="{{goods.image}}" mode="widthFix"></image>
+			<image src="{{weserv+goods.image}}" mode="widthFix"></image>
 			<view class="goods-info">
 				<view class="goods-title">
 					<text>{{goods.name}}</text>

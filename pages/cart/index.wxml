@@ -27,7 +27,7 @@
         </view>
         <!-- 图片 -->
         <navigator class="cart_img_wrap" url="../goods_detail/index?goods_name={{item.goodsName}}">
-          <image src="{{item.image}}" mode="widthFix" />
+          <image src="{{weserv+item.image}}" mode="widthFix" />
         </navigator>
         <!-- 信息 -->
         <view class="cart_info_wrap">

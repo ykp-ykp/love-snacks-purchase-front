@@ -14,6 +14,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        weserv:app.globalData.weserv,
         //收货地址
         address: {},
         //购物车
