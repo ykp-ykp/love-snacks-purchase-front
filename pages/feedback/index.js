@@ -18,6 +18,20 @@ Page({
   },
   //提交表单
   async handleFormSubmit() {
+      //10分钟内只能反馈一次
+      var pretime = wx.getStorageSync('pretime')
+      if(!pretime){
+        pretime = new Date().getTime()
+        wx.setStorageSync('pretime', pretime)
+      }else{
+        var nowtime = new Date().getTime()
+        wx.setStorageSync('pretime', nowtime)
+        if(nowtime-pretime<=1000*60*10){
+          showToast("请过段时间再反馈")
+          return
+        }
+      }
+
       const { inputText } = this.data;
       if (!inputText.trim()) {
           wx.showToast({

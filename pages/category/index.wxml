@@ -1,3 +1,4 @@
+
 <view class="cates">
   <SearchInput></SearchInput>
   <view class="cates_container">
@@ -16,8 +17,9 @@
             <!-- 左侧图片商品，右侧详情 -->
             
             <navigator class="goods_img_wrap" url="../goods_detail/index?goods_name={{goods.name}}">
-              <image mode="widthFix"
-                src="{{goods.image?goods.image:'https://s3.ax1x.com/2021/02/24/yOxJLq.png'}}" />
+              <!-- <image mode="widthFix"
+                src="https://images.weserv.nl/?url={{goods.image}}" /> -->
+                <image mode="widthFix" src="{{goods.image}}" />
             </navigator>
             <!-- 下面是商品信息 -->
             <view class="goods_info_wrap">
