@@ -4,7 +4,7 @@
   background-color: var(--themeColor);
 }
 
-.search_input navigator {
+.search_input input {
   height: 100%;
   display: flex;
   justify-content: center;

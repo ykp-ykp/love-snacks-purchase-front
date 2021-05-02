@@ -27,6 +27,7 @@ Component({
    */
   
   methods: {
+
     bandleItemTap: function(e){
       /*
       1.在methods中绑定点击事件

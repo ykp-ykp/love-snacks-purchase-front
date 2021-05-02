@@ -1,2 +1,28 @@
-<!--pages/search/index.wxml-->
-<text>pages/search/index.wxml</text>
+
+<SearchInput bind:getContent="getContent">
+</SearchInput>
+<view class="iconfont icon-sousuo" catch:tap="toSearch"></view>
+
+<!--搜索到的内容 -->
+<block wx:for="{{goodsList}}" wx:for-item="goods" wx:key="id">
+        <!-- 下面那个navigator是跳转到商品详情，传递过去的是商品名 -->
+          <view class="goods_item" >
+            <!-- 左侧图片商品，右侧详情 -->
+            
+            <navigator class="goods_img_wrap" url="../goods_detail/index?goods_name={{goods.name}}">
+              <!-- <image mode="widthFix"
+                src="https://images.weserv.nl/?url={{goods.image}}" /> -->
+                <image mode="widthFix" src="{{weserv + goods.image}}" />
+            </navigator>
+            <!-- 下面是商品信息 -->
+            <view class="goods_info_wrap">
+              <view class="nameANDprice">
+                <view class="goods_name">{{goods.name}}</view>
+                <view class="goods_price">￥{{goods.price}}</view>
+              </view>
+              <view class="gouwuche">
+                <view class="iconfont icon-gouwuche" catchtap="handleCartAdd" data-goodsname="{{goods.name}}"></view>
+              </view>
+            </view>
+          </view>
+        </block>

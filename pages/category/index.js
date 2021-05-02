@@ -17,7 +17,7 @@ Page({
     //右侧内容的滚动条距离顶部的距离
     scrollTop: 0,
     //右侧商品列表
-    goodsList:[]
+    goodsList:[],
   },
   AllGoods:[],
   /**

@@ -1,6 +1,9 @@
 
 <view class="cates">
-  <SearchInput></SearchInput>
+  <navigator url="/pages/search/index" open-type="navigate">
+    <SearchInput></SearchInput>
+  </navigator>
+  
   <view class="cates_container">
     <!-- 左侧菜单和右侧商品 -->
     <scroll-view class="left_menu" scroll-y="{{true}}">

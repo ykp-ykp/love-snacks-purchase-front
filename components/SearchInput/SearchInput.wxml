@@ -1,7 +1,6 @@
 <view class="search_input">
-  <navigator url="/pages/search/index" open-type="navigate">
-    搜索
-  </navigator>
+  <input style="text-align: center;" value="" placeholder="搜索" placeholder-style="text-align: center;" bindinput="getInput">
+  </input>
 </view>
 
 
