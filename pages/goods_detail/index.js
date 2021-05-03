@@ -9,8 +9,21 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tabs:[
+      {
+        id:0,
+        name:"商品信息",
+        isActive:true
+      },
+      {
+        id:1,
+        name:"商品评价",
+        isActive:false
+      }
+    ],
     weserv:app.globalData.weserv,
     goodsDetail: {},
+    evaluationList:[],
     islogin: false,
     showModalStatus: false,
     num: 1,
@@ -24,6 +37,7 @@ Page({
   onLoad: function (options) {
     this.goods_name = options.goods_name
     this.getGoodsDetail(this.goods_name)
+    this.getEvaluation(this.goods_name)
   },
 
   onShow() {
@@ -181,6 +195,26 @@ Page({
     console.log("即将加入订单的商品：", data)
     await utils.Add(url, data) //向数据库中的order表添加数据
   },
+
+  //商品信息和商品评价
+  handletabsitemchange(e){
+    var index = e.detail;
+    let {tabs}=this.data;
+    this.data.tabs.forEach((v,i)=>i===index?v.isActive=true:v.isActive=false);
+    this.setData({
+      tabs
+    })
+  },
+
+  async getEvaluation(goodsName){
+    let url = "http://localhost:8080/EvaluationController/getEvaluationByGoodsName"
+    let data = {goodsName:goodsName}
+    let res = await utils.getDataFromMysql(url,data)
+    this.setData({evaluationList:res.data})
+  },
+
+
+
 
 
 

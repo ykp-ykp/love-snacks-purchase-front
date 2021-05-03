@@ -18,15 +18,21 @@
   </view>
 </view>
 
-<view class="goods_info">
-  <view class="goods_info_title">图文详情</view>
-  <view class="goods_info_content">
-    <!-- 富文本 -->
-    <!-- {{goodsDetail.goods_introduce}} -->
-    <rich-text nodes="{{goodsDetail.goods_introduce}}"></rich-text>
-  </view>
+<!-- 商品信息和商品评价 -->
+<Tabs tabs="{{tabs}}" bind:itemChange="handletabsitemchange"></Tabs>
+<view wx:if="{{tabs[0].isActive}}" class="CommentContainer">
+	{{goodsDetail.information}}
 </view>
+<block wx:if="{{tabs[1].isActive}}">
+  <block wx:for="{{evaluationList}}" wx:for-item="evaluation" wx:key="orderId">
+    <view class="CommentContainer">
+      {{evaluation.content}}
+    </view>
+  </block>
+</block>
 
+
+<!-- 下面是最底部的按钮 -->
 <view class="btm_tool">
   <view class="tool_item">
     <view class="iconfont .icon-kefu3"></view>
@@ -52,7 +58,7 @@
 </view>
 
 
- <!--弹出框  -->
+ <!--立即购买弹出框  -->
 <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
    <view class='commImg'><image src='{{weserv+goodsDetail.image}}' mode="aspectFit"></image></view>
    <view class='column'>

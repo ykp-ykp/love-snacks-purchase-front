@@ -1,5 +1,5 @@
 <view class="search_input">
-  <input style="text-align: center;" value="" placeholder="搜索" placeholder-style="text-align: center;" bindinput="getInput">
+  <input value="" placeholder="搜索" placeholder-style="text-align: center;" bindinput="getInput">
   </input>
 </view>
 

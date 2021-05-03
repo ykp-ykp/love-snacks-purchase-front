@@ -272,3 +272,11 @@ page {
     flex: 1;
     text-align: center;    
 }
+
+.CommentContainer{
+  background-color: rgb(236, 230, 230);
+  margin: 20rpx 10rpx;
+  border: solid 1px gray;
+  border-radius: 12rpx;
+  padding: 20rpx 10rpx;
+}

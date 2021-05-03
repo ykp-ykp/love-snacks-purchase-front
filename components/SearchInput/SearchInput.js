@@ -29,6 +29,5 @@ Component({
       //传递输入的搜索内容
       this.triggerEvent("getContent",content)
     }
-
   }
 })
