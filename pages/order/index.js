@@ -36,7 +36,7 @@ Page({
         isActive:false
       }
     ],
-    state : ["等待收货","待评价","退货中","已评价"]
+    state : ["待发货","待评价","退货中","已评价","已发货","已完成退货"]
   },
 
   onLoad(options){
@@ -75,14 +75,16 @@ Page({
   async getOrders(state){
     
     console.log("state = ",state)
-    //0：全部，1：待收货，2：待评价，3：退货，4：已评价（把数据库中也设计成这样对应的关系）
+    //0：全部，1：待发货，2：待评价，3：退货，4：已评价，5：已发货，6：已完成退货（把数据库中也设计成这样对应的关系）
     var url = ""
     var data = {};
     if(state == 0){
       url = "http://localhost:8080/OrderController/getOrderByOpenid"
       data = { openid:app.globalData.openid }
-    }
-    else{
+    }else if(state==1){  //获取待收货订单，其中包括已发货和未发货的订单
+      url = "http://localhost:8080/OrderController/getTobeReceived"
+      data = { openid:app.globalData.openid}
+    }else{
       url = "http://localhost:8080/OrderController/getSpecialOrdersByOpenid"
       data = { openid:app.globalData.openid,state:state}
     }

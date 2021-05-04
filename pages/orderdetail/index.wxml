@@ -60,10 +60,31 @@
 		</view>
 	</view>
 </view>
-<!-- 如果是已经评价过的订单就不显示操作按钮 -->
-<block wx:if="{{order.state != 4}}">
-	<view class="operate" data-state="{{order.state}}" catchtap="Operate">{{operate[[order.state-1]]}}</view>
+
+
+<!-- 待发货--申请退货 -->
+<block wx:if="{{order.state==1}}">
+	<view class="operate" data-state="5" catchtap="Operate">申请退货</view>
 </block>
-<view wx:else class="CommentContainer">
+
+<!-- 待评价--去评价 -->
+<block wx:if="{{order.state==2}}">
+	<view class="operate" data-state="2" catchtap="Operate">去评价</view>
+</block>
+
+<!-- 正在退货中的订单 -->
+<block wx:if="{{order.state==3}}">
+	<view class="operate" data-state="3" catchtap="Operate">取消退货</view>
+</block>
+
+<!-- 已评价 -->
+<view wx:if="{{order.state==4}}" class="CommentContainer">
 	评价内容：{{evaluation.content}}
 </view>
+
+<!-- 已发货 -->
+<block wx:if="{{order.state==5}}">
+	<view class="operate" data-state="5" catchtap="Operate">申请退货</view>
+	<view class="operate" data-state="1" catchtap="Operate">确认收货</view>
+</block>
+<!-- 1：确认收货，2：去评价，3：取消退货，4：查看评价内容（无操作），5：申请退货 -->

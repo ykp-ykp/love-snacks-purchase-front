@@ -13,8 +13,8 @@ Page({
     goods:{},
     order:{},
     address:{},
-    state : ["已付款-等待收货...","已收货-待评价...","正在退货-处理中...","订单已评价..."],
-    operate: ["确认收货","去评价","取消退货"],
+    state : ["已付款-待发货...","已收货-待评价...","正在退货-处理中...","订单已评价...","已发货","订单已完成退货"],
+    operate: ["申请退货","去评价","取消退货","确认收货"],
     evaluation:{}
   },
 
@@ -60,18 +60,22 @@ Page({
   },
 
   async Operate(options){
-
+    // <!-- 1：确认收货，2：去评价，3：取消退货，4：查看评价内容（无操作），5：申请退货 -->
     let operateType = options.target.dataset.state
     if(operateType == 1){
       console.log("确认收货")
       await this.becomeWaitEvaluated();
     }else if(operateType == 2){
+      console.log("去评价")
       wx.navigateTo({
         url: '../../pages/evaluate/index'
       })
     }else if(operateType == 3){
       console.log("取消退货")
-      await this.becomeWaitEvaluated();
+      await this.becomeToBeReceive();
+    }else if(operateType ==5){
+      console.log("申请退货")
+      await this.becomeReturnGoods();
     }
     
   },
@@ -80,7 +84,7 @@ Page({
   async becomeWaitEvaluated(){
       var url = ""
       var data = {}
-      let res =await showModal("是取消退货")
+      let res =await showModal("是否确认收货")
       if(res.confirm){
         url = "http://localhost:8080/OrderController/updateState"
         data = {
@@ -93,6 +97,44 @@ Page({
           })
         )
       }
+  },
+
+  //订单取消退货，变成等待收获中的已发货
+  async becomeToBeReceive(){
+    var url = ""
+    var data = {}
+    let res =await showModal("是否取消退货")
+    if(res.confirm){
+      url = "http://localhost:8080/OrderController/updateState"
+      data = {
+        state: 5,orderId:this.data.orderId
+      }
+      utils.Add(url,data)
+      .then(
+        wx.navigateBack({
+          delta: 1,
+        })
+      )
+    }
+  },
+
+  //订单申请退货
+  async becomeReturnGoods(){  
+    var url = ""
+    var data = {}
+    let res =await showModal("是否申请退货")
+    if(res.confirm){
+      url = "http://localhost:8080/OrderController/updateState"
+      data = {
+        state: 3,orderId:this.data.orderId
+      }
+      utils.Add(url,data)
+      .then(
+        wx.navigateBack({
+          delta: 1,
+        })
+      )
+    }
   },
 
   async getEvaluation(){

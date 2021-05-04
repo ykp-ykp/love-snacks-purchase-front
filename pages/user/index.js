@@ -106,24 +106,14 @@ Page({
 
     addUser(){
         console.log("用户正在登陆，如未注册则会自动注册")
-        wx.request({
-            url: 'http://localhost:8080/Controller/insertUser',
-            data: {
-              openid: this.data.openid,
-              nickName: this.data.userInfo.nickName,
-            },
-            
-            method: "POST",
-            header: {
-              'content-type': 'application/x-www-form-urlencoded'
-            },
-            success: res => {
-                console.log("注册成功")
-            },
-            fail:res=>{
-                console.log("请求失败/注册失败--res：",res)
-            }
-          })
+        let url = 'http://localhost:8080/UserController/addUser';
+        let data = {
+            openid: this.data.openid,
+            nickName: this.data.userInfo.nickName,
+            avatarUrl: this.data.userInfo.avatarUrl,
+            phone:""
+        }
+        utils.Add(url,data);
     },
 
     async test(){
