@@ -91,50 +91,9 @@ Page({
         }
     },
 
-    // async play() {
-    //     try {
-    //         const token = wx.getStorageSync('token');
-    //         if (!token) {
-    //             wx.navigateTo({
-    //                 url: '/pages/auth/index',
-    //             })
-    //         } else {
-    //             //订单参数
-    //             const order_price = this.data.totalPrice;
-    //             const consignee_add = this.data.address.all;
-    //             const cart = this.data.cart
-    //             let goods = [];
-    //             cart.forEach(v => goods.push({
-    //                 goods_id: v.goods_id,
-    //                 goods_number: v.num,
-    //                 goods_price: v.price
-    //             }))
-    //             const oderParams = { order_price, consignee_add, goods };
-    //             //发送请求获取订单号参数
-    //             const { order_number } = await request({ url: "/my/orders/create", method: "POST", data: oderParams });
-    //             //发支付接口
-    //             const { pay } = await request({ url: "/my/orders/req_unifiedorder", method: "POST", data: { order_number } });
-    //             //发起微信支付
-    //             await requestPayment(pay)
-    //                 //查看后台订单状态
-    //             const res = await request({ url: "/my/orders/chkOrder", method: "POST", data: { order_number } });
-    //             await showToast({ title: "支付成功" });
-    //             //删除支付后对商品
-    //             let newCart = wx.getStorageSync("cart");
-    //             newCart = newCart.filter(v => !v.checked);
-    //             wx.setStorageSync("cart", newCart);
-    //             // 支付成功了 跳转到订单页面
-    //             wx.navigateTo({
-    //                 url: '/pages/order/index'
-    //             });
-    //         }
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }
     async addOrder(v) { //v是购物车里面选中去支付的一项商品
         //创建订单并添加到数据库中
-
+        console.log("购买的商品：",v)
         let orderId = new Date().getTime() + Math.random().toString(36).substring(2)
         let openid = this.data.openid
         let nickName = this.data.userInfo.nickName
@@ -158,6 +117,24 @@ Page({
         }
         console.log("即将加入订单的商品：", data)
         await utils.Add(url,data)  //向数据库中的order表添加数据
+        //下面应该增加商品的销量和余量
+        let res = await utils.getDataFromMysql("http://localhost:8080/GoodsController/getGoodsByname",{name:v.goodsName})
+        this.updateSurplus(v.weight,res.data)
+        this.updateSales(v.weight,res.data)
+    },
+
+    async updateSurplus(weight,goods){
+        let surplus = goods.surplus-weight;
+        let url = "http://localhost:8080/GoodsController/updateSurplus"
+        let data = {name:goods.name,surplus:surplus}
+        await utils.Update(url,data)
+    },
+
+    async updateSales(weight,goods){
+        let sales = goods.sales+weight;
+        let url = "http://localhost:8080/GoodsController/updateSales"
+        let data = {name:goods.name,sales:sales}
+        await utils.Update(url,data)
     },
 
     async deleteItemFromCart(goodsName) {

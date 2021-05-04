@@ -75,6 +75,28 @@ export function Add(url,data){
   })
 }
 
+export function Update(url,data){
+  return new Promise((resolve, reject) =>{
+      wx.request({
+        url: url,
+        data: data,
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (result) {
+          console.log("发送请求成功")
+          resolve(result)
+        },
+        fail: (err) => {
+          console.log("发送请求成功")
+           reject(err)
+        },
+        complete: () => {}
+      })
+  })
+}
+
 //从数据库中删除对象
 export function Delete(url,data){
   return new Promise((resolve, reject) =>{
