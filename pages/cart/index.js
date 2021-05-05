@@ -25,12 +25,12 @@ Page({
     async onLoad(){
         /*cart是一个数组，每一个元素表示一种商品。其中每一个元素又具有以下属性: name price image num(该商品的数量) checked(是否被选中)*/
     },
+
     async onShow() {
         //获取登录状态
         this.setData({
             islogin:app.globalData.islogin
         })
-
         //收货地址接收
         const address = wx.getStorageSync('address');
         this.setData({

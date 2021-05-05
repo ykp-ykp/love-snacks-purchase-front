@@ -142,5 +142,14 @@ Page({
         wx.navigateTo({
           url: '../../pages/collect/index',
         })
+    },
+
+    toAlterPhone(){
+        if(!this.data.userInfo)
+            showToast("请先登录")
+        else 
+            wx.navigateTo({
+            url: '../../pages/phone/index?openid='+this.data.openid,
+            })
     }
 })
