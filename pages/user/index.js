@@ -54,7 +54,6 @@ Page({
                     userInfo: res.userInfo,
                 })
         }
-
         this.addUser()
         this.onShow()      
     },

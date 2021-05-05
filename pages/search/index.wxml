@@ -2,7 +2,9 @@
 <SearchInput bind:getContent="getContent">
 </SearchInput>
 <view class="iconfont icon-sousuo" catch:tap="toSearch"></view>
-
+<block wx:if="{{noresult}}">
+  <view class="noresult">对不起，无相关商品</view>
+</block>
 <!--搜索到的内容 -->
 <block wx:for="{{goodsList}}" wx:for-item="goods" wx:key="id">
         <!-- 下面那个navigator是跳转到商品详情，传递过去的是商品名 -->

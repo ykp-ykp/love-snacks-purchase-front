@@ -9,7 +9,8 @@ Page({
   data: {
     weserv:app.globalData.weserv,
     goodsList:[],
-    content:""//搜索内容
+    content:"",//搜索内容
+    noresult:false
   },
 
   /**
@@ -28,8 +29,11 @@ Page({
     let url = "http://localhost:8080/GoodsController/FuzzyQuery"
     let data={name:this.data.content}
     let res =await utils.getDataFromMysql(url,data)
-    console.log(res)
-    this.setData({goodsList:res.data})
+
+    if(res.data.length==0)
+      this.setData({goodsList:[],noresult:true})
+    else
+      this.setData({goodsList:res.data,noresult:false})
   }
   
 })
