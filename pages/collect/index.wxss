@@ -46,3 +46,11 @@
   color: var(--themeColor);
   font-size: 32rpx;
 }
+
+.nocollection{
+  background-color: rgb(236, 230, 230);
+  margin: 20rpx 10rpx;
+  padding: 20rpx 10rpx;
+  font-size: 20rpx;
+  text-align: center;
+}

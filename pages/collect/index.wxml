@@ -13,4 +13,6 @@
     </view>
   </view>
 
-<view wx:else>未登录</view>
+  <block wx:if="{{nocollection}}">
+  <view class="nocollection">无收藏商品</view>
+</block>
