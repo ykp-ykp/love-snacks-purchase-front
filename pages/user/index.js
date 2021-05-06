@@ -110,7 +110,8 @@ Page({
             openid: this.data.openid,
             nickName: this.data.userInfo.nickName,
             avatarUrl: this.data.userInfo.avatarUrl,
-            phone:""
+            phone:"",
+            address:""
         }
         utils.Add(url,data);
     },
@@ -129,6 +130,13 @@ Page({
             let address = await chooseAddress();
             address.all = address.provinceName + address.cityName + address.countyName + address.detailInfo;
             wx.setStorageSync('address', address)
+            //添加地址到数据库中
+            let data = {
+                openid:app.globalData.openid,
+                address:address.all
+            }
+            await utils.Update("http://localhost:8080/UserController/updateAddress",data);
+
         } catch (err) {
             console.log(err);
         }

@@ -111,6 +111,7 @@ Page({
     //结算
     async allPlay() {
         const { totalNum, address } = this.data;
+        await this.addAddressToMysql(address.all)
         if (!address.userName) {
             await showToast('未填联系方式')
         } else if (totalNum === 0) {
@@ -122,6 +123,16 @@ Page({
         }
 
     },
+
+    async addAddressToMysql(address){
+        let url = "http://localhost:8080/UserController/updateAddress";
+        let data = {
+            openid:app.globalData.openid,
+            address:address
+        }
+        await utils.Update(url,data);
+    },
+
     //更新购物车数据
     setCart(cart) {
         let totalPrice = 0;
