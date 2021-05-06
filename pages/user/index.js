@@ -142,5 +142,11 @@ Page({
         wx.navigateTo({
           url: '../../pages/collect/index',
         })
+    },
+
+    toAlterPhone(){
+        wx.navigateTo({
+          url: '../../pages/phone/index?openid='+this.data.openid,
+        })
     }
 })

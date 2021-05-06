@@ -21,7 +21,7 @@
             <view class="item">
                 <view class="iconfont .icon-gengduo"></view>
             </view>
-            
+            <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button> -->
         </view>
         <!--我的订单-->
         <view class="user_order">
@@ -55,7 +55,7 @@
             <text>19913328359</text>
         </button>
         <navigator url="/pages/feedback/index" class="item">意见反馈</navigator>
+        <button class="item btn" catchtap="toAlterPhone">修改手机号</button>
         <view class="item" catchtap="exit">退出登录</view>
-        <button class="item btn" open-type="share">把应用程序推荐给其他人</button>
     </view>
 </view>
