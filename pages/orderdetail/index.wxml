@@ -49,9 +49,17 @@
 				<text>{{order.orderId}}</text>
 			</view>
 			<view class="g-t-item">
-				<text wx:if="{{order.state != 4}}">创建时间</text>
+				<block wx:if="{{order.state != 4}}">
+					<text>创建时间</text>
+					<text>{{order.time}}</text>
+				</block>
+				<block wx:else>
+					<text>评论时间</text>
+					<text>{{evaluation.time}}</text>
+				</block>
+				<!-- <text wx:if="{{order.state != 4}}">创建时间</text>
 				<text wx:else>评论时间</text>
-				<text>{{order.time}}</text>
+				<text>{{order.time}}</text> -->
 			</view>
 			<view class="g-t-item">
 				<text>支付方式</text>
