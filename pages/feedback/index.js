@@ -18,6 +18,11 @@ Page({
   },
   //提交表单
   async handleFormSubmit() {
+      if(!app.globalData.islogin){
+        showToast("请登录")
+        return
+      }
+
       //10分钟内只能反馈一次
       var pretime = wx.getStorageSync('pretime')
       if(!pretime){

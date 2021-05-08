@@ -6,7 +6,7 @@
     <radio value="购买遇见问题">购买遇见问题</radio>
     <radio value="性能问题">性能问题</radio>
     <radio value="页面显示问题">页面显示问题</radio>
-    <radio value="其他">其他</radio>
+    <radio value="其他" checked="checked">其他</radio>
   </radio-group>
   <view class="feedback_content">
     <textarea value="{{inputText}}" bindinput="handleInputText" placeholder="请描述您的问题"></textarea>
