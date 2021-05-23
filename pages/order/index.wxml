@@ -5,6 +5,10 @@
     <view class="order_main">
         <view wx:for="{{orders}}" wx:key="order_id" class="order_item" catchtap="goOrderDetail" data-orderid="{{item.orderId}}">
             <view class="order_no_row">
+                <view class="order_no_text">商品名称</view>
+                <view class="order_no_value">{{item.goodsName}}</view>
+            </view>
+            <view class="order_no_row">
                 <view class="order_no_text">订单编号</view>
                 <view class="order_no_value">{{item.orderId}}</view>
             </view>
